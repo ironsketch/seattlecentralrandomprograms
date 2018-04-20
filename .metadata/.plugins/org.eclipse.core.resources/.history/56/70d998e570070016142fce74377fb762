@@ -1,0 +1,11 @@
+import java.awt.Color; // For the game design
+
+import uwcse.graphics.GWindow;
+
+public class TheBoard {
+	private GWindow window; // The window
+	
+	
+	
+
+}

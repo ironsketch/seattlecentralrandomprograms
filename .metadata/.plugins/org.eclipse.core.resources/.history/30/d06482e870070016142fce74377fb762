@@ -1,0 +1,54 @@
+import java.awt.Color; // For the game design
+import java.awt.Event;
+
+import uwcse.graphics.GWindow;
+import uwcse.graphics.GWindowEvent;
+import uwcse.graphics.GWindowEventAdapter;
+import uwcse.graphics.Rectangle;
+import java.awt.event.MouseMotionListener;
+import java.awt.event.MouseEvent;
+
+/*  By - Michelle Bergin
+ *  A logic game to guess your opponents spot,symbol and color, on a board!
+*/
+public class TelepathyMain extends GWindowEventAdapter{
+	
+	private GWindow window; // Graphics window that displays my game
+	private Rectangle quitButton;
+	private MouseEvent e;
+	
+	public TelepathyMain(){
+		
+		// The window is by default 700 wide and 500 high
+		this.window = new GWindow("Mountain scene...",700,500);
+	
+		// so that a click on the close box of the
+		// window terminates the application
+		this.window.setExitOnClose();
+		
+		// Quit Button
+		this.quitButton = new Rectangle(30, 30, 100, 
+			100, Color.yellow, true);
+		this.window.add(quitButton);
+		
+		
+		// Code to do the animation 
+		this.window.addEventHandler(this); // This scene
+		this.window.startTimerEvents(150); // redraw every 150 ms
+		
+	}
+	
+	public void timerExpired(GWindowEvent event) {
+		
+		this.window.suspendRepaints();
+			
+		//quitButton.addMouseMotionListener(this);
+		//addMouseMotionListener(this);
+		this.window.resumeRepaints();
+		
+	}
+	public static void main(String[] args) {
+		new TelepathyMain();
+	}
+
+}
